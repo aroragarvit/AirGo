@@ -1,8 +1,10 @@
-import { User } from "../models/user.mjs";
+import { User } from "../../models/userModel.js";
 import jwt from "jsonwebtoken";
 
 import dotenv from "dotenv";
+
 dotenv.config();
+import { sendMail } from "../../utils/sendMail.js";
 
 export async function signup(req, res) {
   try {
