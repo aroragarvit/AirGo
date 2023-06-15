@@ -30,6 +30,7 @@ export async function signup(req, res) {
     }
 
     // verification of email address using sending email to the user and then verifying the email address
+    // if the user reveiver mail and himself verify the email address then only the user will be able to login and that means that email is valid
 
     const emailVerificationToken = jwt.sign(
       {
@@ -48,7 +49,7 @@ export async function signup(req, res) {
 
     await user.save();
 
-    await sendMail(email, emailVerificationToken);
+    await sendMail(email, emailVerificationToken); //  wwe a are running function sending  with mail and token as parameters
 
     return res.status(201).json({
       message: "User created successfully And email verification mail sent",
