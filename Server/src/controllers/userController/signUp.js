@@ -31,7 +31,7 @@ export async function signup(req, res) {
 
     // verification of email address using sending email to the user and then verifying the email address
     // if the user reveiver mail and himself verify the email address then only the user will be able to login and that means that email is valid
-
+    // using decoding this token sent through mail and then verifying the email address dont send this usign cookie or response  because then it could be decoded and email will verified withoud even sending mail to the user
     const emailVerificationToken = jwt.sign(
       {
         email,
