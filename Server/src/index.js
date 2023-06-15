@@ -3,8 +3,9 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
-import Connect from "./utils/connect.js";
+import connect from "./utils/connect.js";
 
+import userRoutes from "./routes/userRouter.js";
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
@@ -27,6 +28,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
+app.use("/user", userRoutes);
 
 // Start server
 server.listen(port, async () => {
@@ -34,5 +36,5 @@ server.listen(port, async () => {
   const host = server.address().address;
   const port = server.address().port;
   console.log("Server is running on port " + port + " on host " + host);
-  await Connect();
+  await connect();
 });
