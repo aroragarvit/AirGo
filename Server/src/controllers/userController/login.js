@@ -1,5 +1,8 @@
 import { User } from "../../models/user.mjs";
 import jwt from "jsonwebtoken";
+import { sendMail } from "../../utils/sendMail.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export async function login(req, res) {
   const { username, email, password } = req.body;

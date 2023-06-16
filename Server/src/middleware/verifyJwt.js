@@ -1,4 +1,6 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 export async function verifyJwt(req, res, next) {
   const token = req.cookies.token || req.headers.authorization;
