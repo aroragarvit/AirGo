@@ -19,7 +19,7 @@ const sendMail = async (email, emailVerificationToken) => {
       from: process.env.EMAIL,
       to: email,
       subject: "Email Verification",
-      text: `http://localhost:5000/verify?token=${token}`,
+      text: `http://localhost:5000/verify?token=${emailVerificationToken}`,
     };
 
     await transporter.sendMail(mailOptions);
