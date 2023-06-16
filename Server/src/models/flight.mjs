@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Usser } from "./user.mjs";
+import { User } from "./user.mjs";
 
 const flightSchema = new mongoose.Schema({
   flightName: {
