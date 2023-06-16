@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 import { Flight } from "./flight.mjs";
-
+// can only change admin from database cannot send the request from frontend to change the admin
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+
     bookings: [
       {
         flight: {
