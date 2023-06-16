@@ -1,3 +1,6 @@
+import { User } from "../../models/userModel.js";
+import jwt from "jsonwebtoken";
+
 export async function login(req, res) {
   const { username, email, password } = req.body;
 
@@ -49,3 +52,4 @@ export async function login(req, res) {
     return res.status(401).json({ error: "Invalid credentials" });
   }
 }
+// I am sending token as cookie and auth heder to client so on accessing protected route having verify as a  middleware it will be sent from client to server and if we can decode it we will send user id and username also to client
