@@ -59,3 +59,4 @@ export async function signup(req, res) {
     return res.status(500).json({ error: "Internal server error" });
   }
 }
+// I have not created functionality for  sending jwt in signup so even after signup user will not be able to onboard to the application we still have to login after that
