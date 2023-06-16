@@ -4,8 +4,11 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import connect from "./utils/connect.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 import { userRouter } from "./routes/userRouter.js";
+import { adminRouter } from "./routes/adminRouter.js";
 const PORT = process.env.PORT || 5000;
 
 //const corsOptions = {
@@ -29,6 +32,7 @@ app.disable("x-powered-by");
 //  next();
 //});
 app.use("/user", userRouter);
+app.use("/admin", adminRouter);
 
 // Start server
 app.listen(PORT, async () => {
