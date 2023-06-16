@@ -3,7 +3,7 @@ import { User } from "../../models/user.mjs";
 
 export async function bookFlight(req, res) {
   const { flightId, seats } = req.body;
-  const userId = req.user.id;
+  const userId = req.id;
   if (!flightId || !seats) {
     return res.status(400).json({ error: "Please enter details" });
   }
