@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
+import { Flight } from "./flight.mjs";
 
 const userSchema = new mongoose.Schema(
   {
@@ -27,6 +29,17 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    bookings: [
+      {
+        flight: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Flight",
+        },
+        seatsBooked: {
+          type: Number,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
