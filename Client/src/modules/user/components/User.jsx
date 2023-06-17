@@ -1,15 +1,19 @@
-import { Avatar, Box, Button, Menu, MenuButton, MenuList, Text, MenuItem } from "@chakra-ui/react";
+import { Avatar, Box, Button, Menu, MenuButton, MenuList, Text, MenuItem, useDisclosure } from "@chakra-ui/react";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/authContext";
 import { AuthModal } from "./AuthModal";
+import { BookingsModal } from "./BookingsModal";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 export const User = () => {
   const { user, isAuthenticated, setIsAuthenticated, manageAuthModal } = useContext(AuthContext);
+  const {isOpen, onOpen, onClose} = useDisclosure();
   const [authType, setAuthType] = useState("Login");
   return (
     <>
       <AuthModal authType={authType}/>
+      <BookingsModal />
       <Menu>
         <MenuButton as={Button} rounded={"full"} cursor={"pointer"} padding={0}>
           <Avatar size={"sm"} src={isAuthenticated && "https://avatars.dicebear.com/api/male/username.svg"} />
@@ -45,6 +49,7 @@ export const User = () => {
                 cursor={"pointer"}
                 onClick={() => {
                   setIsAuthenticated(false);
+                  Cookies.remove("token");
                 }}
               >
                 Log Out
