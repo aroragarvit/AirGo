@@ -1,7 +1,7 @@
 import { Flight } from "../../models/flight.mjs";
 
 export async function getFlights(req, res) {
-  const { date, source, destination } = req.query;
+  const { date, source, destination } = req.body;
 
   if (!date || !source || !destination) {
     return res.status(400).json({ error: "Invalid query" });
