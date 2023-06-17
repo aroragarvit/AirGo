@@ -12,7 +12,7 @@ import { adminRouter } from "./routes/adminRouter.js";
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://air-go.vercel.app/",
   methods: ["GET", "POST"],
   allowedHeaders: ["my-custom-header", "Content-Type", "Authorization"],
   credentials: true,
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.disable("x-powered-by");
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Origin", "https://air-go.vercel.app/");
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
