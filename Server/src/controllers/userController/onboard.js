@@ -8,7 +8,7 @@ export async function onboard(req, res) {
     if (!user) {
       return res.status(404).json({ error: "User not found" }); // and then we are checking if that user exists or not
     } else {
-      return res.status(200).json({ message: "User is logged in" });
+      return res.status(200).json({ msg: "User found", user: user }); // if user exists then we are sending a success message
     }
   } catch (error) {
     console.error(error);
