@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const login = async (email, password) => {
-  const res = await axios.post("http://localhost:5000/user/login", {
+  const res = await axios.post("https://airgo-3t6h.onrender.com/user/login", {
     email,
     password,
   });
