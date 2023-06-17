@@ -1,3 +1,6 @@
+import { Flight } from "../../models/Flight.mjs";
+import { User } from "../../models/User.mjs";
+
 export const viewBookings = async (req, res) => {
   const { flightId } = req.body;
   const userId = req.id;
