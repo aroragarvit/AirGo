@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/authContext";
 import {useToast} from "@chakra-ui/react"
-import timeConvert from "../../../utils/timeConvert";
+import {search} from "../services/search"
 
 export const SearchFlight = ({setData: setResultsData}) => {
   const [data, setData] = useState({
@@ -97,24 +97,21 @@ export const SearchFlight = ({setData: setResultsData}) => {
             })
             return;
           }
-          console.log(data);
-          setResultsData([{
-            origin: data.origin,
-            departureTime: "16:55",
-            destination: data.destination,
-            arrivalTime: "18:55",
-            cost: 4521,
-            id: "6E612",
-            availableSeats: 12,
-          },{
-            origin: data.origin,
-            departureTime: "05:24",
-            destination: data.destination,
-            arrivalTime: "07:55",
-            cost: 5124,
-            id: "6E612",
-            availableSeats: 34,
-          }])
+          console.log(data)
+          search(data).then(
+            (resData) => {console.log(resData)
+            setResultsData(resData.flights)
+            }
+          ).catch(
+            (e) => toast({
+              title: "Error",
+              description: "No flights found",
+              status: "error",
+              duration: 5000,
+              isClosable: true,
+            })
+          )
+          
         }}
       >
         Search

@@ -20,23 +20,26 @@ export const ViewFlights = ({ data }) => {
             rounded="2xl"
             justify={"space-between"}
             alignItems={"center"}
-            key={flight.id}
+            key={flight._id}
             mb={4}
           >
+            <Text fontSize={"xl"} fontWeight={"semibold"}>
+              {flight.departure.slice(0,10)}
+            </Text>
 
             <Flex align={"center"}>
-                <Text fontSize={"xl"} fontWeight={"semibold"}>
-                    {flight.departureTime} - {flight.arrivalTime}
-                </Text> 
+              <Text fontSize={"xl"} fontWeight={"semibold"}>
+                {flight.source} - {flight.destination}
+              </Text>
             </Flex>
 
             <Flex align={"center"}>
               <MdFlight size={24} />
-              <Text ml={4}>{flight.id}</Text>
+              <Text ml={4}>{flight.flightName}</Text>
             </Flex>
             <Flex align={"center"}>
               <Text fontSize={"xl"} fontWeight={"semibold"}>
-                ₹ {flight.cost}
+                ₹ {flight.price}
               </Text>
               <Button colorScheme={"blue"} ml={8}>
                 Book
