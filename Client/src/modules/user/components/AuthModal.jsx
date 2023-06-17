@@ -16,6 +16,7 @@ import { AuthContext } from "../../../contexts/authContext";
 import { useState } from "react";
 import { login } from "../services/login.js";
 import { signin } from "../services/signin";
+import Cookies from "js-cookie";
 
 export const AuthModal = ({ authType }) => {
   const toast = useToast();
@@ -112,7 +113,7 @@ export const AuthModal = ({ authType }) => {
                   setUser({
                     email: authUser.email,
                   });
-                  localStorage.setItem("token", data.token);
+                  Cookies.set("token", data.token);
                 } catch (error) {
                   toast({
                     title: error.response.data.error,
