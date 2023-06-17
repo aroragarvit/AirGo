@@ -17,6 +17,6 @@ userRouter.post("/flights", verifyJwt, getFlights); // make Flights function to 
 userRouter.post("/book", verifyJwt, bookFlight); // make book function to book a flight (id, name, seats, and price ) => of particular flight going from source to destination on a particular date
 // we can pass user id through req.params  to book flight for that particular user or we can also pass user through verifyJwt middleware and then we can get user id from req.user.id
 userRouter.post("/mybookings", verifyJwt, bookings);
-userRouter.get("/onboard", verifyJwt, onboard);
+userRouter.post("/onboard", verifyJwt, onboard);
 
 export { userRouter };
