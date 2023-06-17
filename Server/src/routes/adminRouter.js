@@ -11,6 +11,6 @@ adminRouter.post("/login", adminLogin);
 // Initially make without verifyJwt middleware and test with Postman to see if it works after adding verifyJwt middleware
 adminRouter.post("/addFlight", verifyJwt, addFlight);
 adminRouter.delete("/deleteFlight", verifyJwt, removeFlight);
-adminRouter.get("/viewBookings", verifyJwt, viewBookings);
+adminRouter.post("/viewBookings", verifyJwt, viewBookings);
 
 export { adminRouter };

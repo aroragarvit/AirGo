@@ -5,10 +5,12 @@ import { Navbar } from "../modules/admin/components/Navbar";
 import { AddFlight } from "../modules/admin/components/AddFlight";
 import { ViewFlights } from "../modules/admin/components/ViewFlights";
 import { Input, Button } from "@chakra-ui/react";
+import { searchFlight } from "../modules/admin/services/searchFlight";
 
 export const AdminDashboard = () => {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [data, setData] = useState(null);
+  const [flightId, setFlightId] = useState(null);
   return (
     <Box h={"100vh"} w={"100vw"} overflowX={"hidden"}>
       <Navbar />
@@ -17,11 +19,26 @@ export const AdminDashboard = () => {
           <>
             <AddFlight />
             <Flex justify={"center"} align={"center"} w={["full", null, "3xl", "4xl"]}>
-              <Input placeholder="Search By Fight ID or Name" type="number" w={"full"} my={8} />
+              <Input
+                placeholder="Search By Fight ID or Name"
+                type="text"
+                w={"full"}
+                my={8}
+                onChange={(e) => {
+                  setFlightId(e.target.value);
+                }}
+              />
               <Button
                 colorScheme={"blue"}
                 ml={8}
                 onClick={() => {
+                  searchFlight({ flightId })
+                    .then((res) => {
+                      console.log(res);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
                   setData([
                     {
                       origin: "JDH",
