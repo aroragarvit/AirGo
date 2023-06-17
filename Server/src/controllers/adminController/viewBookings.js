@@ -13,10 +13,7 @@ export const viewBookings = async (req, res) => {
       return res.status(400).json({ error: "FlightId is required" });
     }
 
-    const flight = await Flight.findById(flightId).populate({
-      path: "bookings.user",
-      select: ["username", "email"],
-    });
+    const flight = await Flight.findById(flightId).populate("bookings.user");
 
     if (!flight) {
       return res.status(400).json({ error: "FlightId is not valid" });
@@ -41,14 +38,9 @@ export const viewBookings = async (req, res) => {
         flightName: flight.flightName,
         flightId: flight._id,
         departure: flight.departure,
-        seatsAvailable:
-          flight.seats -
-          flight.bookings.reduce((acc, b) => acc + b.seatsBooked, 0),
-        bookings: flight.bookings.map((booking) => ({
-          username: booking.user.username,
-          email: booking.user.email,
-          seatsBooked: booking.seatsBooked,
-        })),
+        source: flight.source,
+        destination: flight.destination,
+        bookings: flight.bookings,
       });
     }
   } catch (error) {
