@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const searchFlight = async (data) => {
   const res = await axios.post(
-    "http://localhost:5000/admin/viewBookings",
+    "https://airgo-3t6h.onrender.com/admin/viewBookings",
     {
       flightId: data.flightId,
     },

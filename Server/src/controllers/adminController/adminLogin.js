@@ -41,7 +41,7 @@ export async function adminLogin(req, res) {
           httpOnly: false,
           maxAge: 3600000, // 1 hour
           path: "/",
-          domain: "localhost",
+          domain: "airgo-3t6h.onrender.com",
         });
 
         return res.status(200).send({

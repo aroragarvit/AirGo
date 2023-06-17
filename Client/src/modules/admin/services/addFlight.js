@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const addFlight = async (data) => {
   const res = await axios.post(
-    "http://localhost:5000/admin/addFlight",
+    "https://airgo-3t6h.onrender.com/admin/addFlight",
     {
       flightName: data.flightName,
       source: data.origin,

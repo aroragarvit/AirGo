@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const search = async (data) => {
   const res = await axios.post(
-    "http://localhost:5000/user/flights",
+    "https://airgo-3t6h.onrender.com/user/flights",
     {
       date: data.departureDate,
       source: data.origin,

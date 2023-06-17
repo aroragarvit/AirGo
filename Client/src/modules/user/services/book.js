@@ -3,7 +3,7 @@ import axios from "axios";
 export const book = async (data) => {
     console.log(data)
   const res = await axios.post(
-    "http://localhost:5000/user/book",
+    "https://airgo-3t6h.onrender.com/user/book",
     {
       flightId: data.flightId,
       seats: data.seats,

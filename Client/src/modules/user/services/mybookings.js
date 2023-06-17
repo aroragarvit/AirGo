@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const mybookings = async () => {
   const res = await axios.post(
-    "http://localhost:5000/user/mybookings",
+    "https://airgo-3t6h.onrender.com/user/mybookings",
     {},
     {
       withCredentials: true,
