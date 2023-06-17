@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       axios
-        .get("http://localhost:5000/onboard", { withCredentials: true })
+        .get("http://localhost:5000/user/onboard", { withCredentials: true })
         .then((response) => {
           if (response.status === 200) {
             setIsAuthenticated(true);
