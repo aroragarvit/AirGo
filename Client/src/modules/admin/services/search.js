@@ -4,7 +4,7 @@ export const searchFlight = async (data) => {
   const res = await axios.post(
     "http://localhost:5000/admin/viewBookings",
     {
-      flightId: data.flightId,
+      flightId: data.search,
     },
     {
       withCredentials: true,

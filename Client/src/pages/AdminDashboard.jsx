@@ -44,7 +44,7 @@ export const AdminDashboard = () => {
                 Search
               </Button>
             </Flex>
-            <ViewFlights data={data} setData={setData} />
+            {data && data.length > 0 && <ViewFlights flight={data[0]} setData={setData} />}
           </>
         ) : (
           <AdminLogin setIsAdminAuthenticated={setIsAdminAuthenticated} />
