@@ -9,7 +9,7 @@ import { AuthContext } from "../../../contexts/authContext";
 import { useToast } from "@chakra-ui/react";
 import { search } from "../services/search";
 
-export const SearchFlight = ({ setData: setResultsData }) => {
+export const SearchFlight = ({ setData: setResultsData, setUserData }) => {
   const [data, setData] = useState({
     origin: "",
     destination: "",
@@ -106,6 +106,7 @@ export const SearchFlight = ({ setData: setResultsData }) => {
                 throw new Error("No flights found");
               }
               setResultsData(resData.flights);
+              setUserData(data)
               setSearching(false);
             })
             .catch((e) => {

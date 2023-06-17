@@ -6,6 +6,7 @@ import { ViewFlights } from "../modules/user/components/ViewFlights";
 
 export const UserDashboard = () => {
   const [data, setData] = useState(null);
+  const [userData, setUserData] = useState(null);
   return (
     <Box h={"100vh"} w={"100vw"} overflowX={"hidden"}>
       <Navbar />
@@ -18,8 +19,8 @@ export const UserDashboard = () => {
         py={16}
         height={"82vh"}
       >
-        <SearchFlight setData={setData} />
-        <ViewFlights data={data} />
+        <SearchFlight setData={setData} setUserData={setUserData} />
+        <ViewFlights data={data} userData={userData} />
       </Flex>
     </Box>
   );
