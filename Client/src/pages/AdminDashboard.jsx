@@ -34,22 +34,11 @@ export const AdminDashboard = () => {
                 onClick={() => {
                   searchFlight({ flightId })
                     .then((res) => {
-                      console.log(res);
+                      setData(res.flight);
                     })
                     .catch((err) => {
                       console.log(err);
                     });
-                  setData([
-                    {
-                      origin: "JDH",
-                      departureTime: "16:55",
-                      destination: "DEL",
-                      arrivalTime: "18:55",
-                      cost: 4521,
-                      id: "6E612",
-                      availableSeats: 12,
-                    },
-                  ]);
                 }}
               >
                 Search
