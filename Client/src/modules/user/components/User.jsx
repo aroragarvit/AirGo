@@ -13,7 +13,7 @@ export const User = () => {
   return (
     <>
       <AuthModal authType={authType}/>
-      <BookingsModal />
+      <BookingsModal isOpen={isOpen} onClose={onClose} />
       <Menu>
         <MenuButton as={Button} rounded={"full"} cursor={"pointer"} padding={0}>
           <Avatar size={"sm"} src={isAuthenticated && "https://avatars.dicebear.com/api/male/username.svg"} />
@@ -42,7 +42,7 @@ export const User = () => {
           {isAuthenticated && (
             <Box>
               <Text marginBottom={5}>{user.email}</Text>
-              <Text cursor={"pointer"} mb={"4"}>
+              <Text cursor={"pointer"} mb={"4"} onClick={onOpen}>
                 My Trips
               </Text>
               <Text
