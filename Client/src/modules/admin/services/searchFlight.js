@@ -27,7 +27,6 @@ export const addFlight = async (data) => {
     }
   );
   if (res.status == 200) {
-    console.log(res);
     return res.data;
   } else {
     throw new Error(res.data.message);

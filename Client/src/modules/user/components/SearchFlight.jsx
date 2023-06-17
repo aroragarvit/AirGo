@@ -6,19 +6,20 @@ import { Flex, Box, Input, Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/authContext";
-import {useToast} from "@chakra-ui/react"
-import {search} from "../services/search"
+import { useToast } from "@chakra-ui/react";
+import { search } from "../services/search";
 
-export const SearchFlight = ({setData: setResultsData}) => {
+export const SearchFlight = ({ setData: setResultsData }) => {
   const [data, setData] = useState({
     origin: "",
     destination: "",
     departureDate: "",
     seats: 1,
   });
+  const [searching, setSearching] = useState(false);
 
   const { isAuthenticated, manageAuthModal } = useContext(AuthContext);
-  const toast = useToast()
+  const toast = useToast();
 
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} p={[4, null, 8]} w={["full", null, "3xl", "4xl"]} rounded="2xl">
@@ -86,32 +87,37 @@ export const SearchFlight = ({setData: setResultsData}) => {
         my={4}
         variant={"solid"}
         colorScheme={"blue"}
+        isLoading={searching}
         onClick={() => {
-          if(!isAuthenticated) {
-            manageAuthModal.onOpen()
+          if (!isAuthenticated) {
+            manageAuthModal.onOpen();
             toast({
               title: "You need to be logged in to search for flights",
               status: "error",
               duration: 5000,
               isClosable: true,
-            })
+            });
             return;
           }
-          console.log(data)
-          search(data).then(
-            (resData) => {console.log(resData)
-            setResultsData(resData.flights)
-            }
-          ).catch(
-            (e) => toast({
-              title: "Error",
-              description: "No flights found",
-              status: "error",
-              duration: 5000,
-              isClosable: true,
+          setSearching(true);
+          search(data)
+            .then((resData) => {
+              if (resData.flights.length === 0) {
+                throw new Error("No flights found");
+              }
+              setResultsData(resData.flights);
+              setSearching(false);
             })
-          )
-          
+            .catch((e) => {
+              toast({
+                title: "Error",
+                description: "No flights found",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+              });
+              setSearching(false);
+            });
         }}
       >
         Search
