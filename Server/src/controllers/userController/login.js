@@ -5,9 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export async function login(req, res) {
-  const { username, email, password } = req.body;
+  const { email, password } = req.body;
 
-  const user = await User.findOne({ $or: [{ username }, { email }] });
+  const user = await User.findOne({ email });
   if (!user) {
     return res.status(404).json({ error: "User not found" });
   }
@@ -48,6 +48,7 @@ export async function login(req, res) {
           msg: "Login successful",
           token: token,
           username: user.username,
+          email: user.email,
         });
       }
     );
