@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 const corsOptions = {
   origin: "http://localhost:5173",
   methods: ["GET", "POST"],
-  allowedHeaders: ["my-custom-header"],
+  allowedHeaders: ["my-custom-header", "Content-Type", "Authorization"],
   credentials: true,
 };
 
@@ -26,11 +26,11 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan("tiny"));
 app.disable("x-powered-by");
-//app.use(function (req, res, next) {
-//  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//  res.header("Access-Control-Allow-Credentials", true);
-//  next();
-//});
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 
