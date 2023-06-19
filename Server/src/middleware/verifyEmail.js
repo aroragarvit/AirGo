@@ -15,7 +15,7 @@ export async function verifyEmail(req, res, next) {
     // token is coded using email and secret key and then decoded using that token and secret key and then we get the email from the token and then we check if the email is present in the database or not
     const user = await User.findOneAndUpdate(
       { email: decdoded_mail.email, emailVerificationToken: token },
-      { emailVerified: true, emailVerificationToken: null }
+      { emailVerified: true }
     );
 
     if (!user) {

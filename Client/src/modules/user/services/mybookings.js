@@ -1,6 +1,8 @@
 import axios from "axios";
+import jsCookie from "js-cookie";
 
 export const mybookings = async () => {
+  const token = jsCookie.get("token");
   const res = await axios.post(
     "https://airgo-3t6h.onrender.com/user/mybookings",
     {},

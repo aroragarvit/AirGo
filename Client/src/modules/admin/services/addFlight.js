@@ -1,4 +1,6 @@
 import axios from "axios";
+import jsCookie from "js-cookie";
+
 
 /**
  * data = {
@@ -12,6 +14,7 @@ import axios from "axios";
  */
 
 export const addFlight = async (data) => {
+  const token = jsCookie.get("token");
   const res = await axios.post(
     "https://airgo-3t6h.onrender.com/admin/addFlight",
     {
