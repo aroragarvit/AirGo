@@ -17,6 +17,7 @@ Admin can perform the following operations:
 3. View Booking of a flight with the details of the passengers and seats Booked by Them
 
 ADMIN
+
 ALL the route are protected by the middleware which checks if the admin is Authenticated or not and also checks if the admin is logged in or not as well as if the particular user is an admin or not By checking the role of the admin in the database
 
 To login as an admin
@@ -42,9 +43,9 @@ User need to Register to application with their name, email and password and on 
 2.Login 
 If the user is registered in the database then to use further services he/she  needs to first login to application because are services are protectd and needs jwt token to access them.
 
-3. Search Flight
+3.Search Flight
 Upon successfull login to application user can search for flights according to source, destination and departure date and book seats in that flight.
 
-4. My trips
+4.My trips
 User can also check all the trip and flight details that he had done in past or have already booked.
 
