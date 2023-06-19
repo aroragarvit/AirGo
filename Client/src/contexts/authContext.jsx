@@ -26,7 +26,12 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       axios
-        .post("https://airgo-3t6h.onrender.com/user/onboard",{} ,{ withCredentials: true })
+        .post("https://airgo-3t6h.onrender.com/user/onboard",{},{
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          withCredentials: true
+        })
         .then((response) => {
           if (response.status === 200) {
             setIsAuthenticated(true);
