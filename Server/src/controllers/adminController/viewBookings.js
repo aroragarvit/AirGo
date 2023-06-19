@@ -13,6 +13,7 @@ export const viewBookings = async (req, res) => {
     const flight = await Flight.find({
       flightName: flightId,
     }).populate("bookings.user", "username email -_id");
+    console.log(flight);
     return res.status(200).json({ flight: flight });
   } catch (err) {
     console.error(err);
