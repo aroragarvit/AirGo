@@ -6,6 +6,12 @@ export const searchFlight = async (data) => {
     {
       flightId: data.search,
     },
+
+{
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+},
     {
       withCredentials: true,
     }

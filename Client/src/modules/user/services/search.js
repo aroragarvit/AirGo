@@ -8,6 +8,13 @@ export const search = async (data) => {
       source: data.origin,
       destination: data.destination,
     },
+
+
+{
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+},
     {
       withCredentials: true,
     }

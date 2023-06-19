@@ -21,7 +21,14 @@ export const addFlight = async (data) => {
       departure: data.departureDate,
       seats: data.seats,
       price: data.price,
-    },
+    }
+    ,
+{
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+}
+    ,
     {
       withCredentials: true,
     }
@@ -33,3 +40,4 @@ export const addFlight = async (data) => {
     throw new Error(res.data.message);
   }
 };
+

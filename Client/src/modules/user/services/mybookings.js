@@ -4,6 +4,12 @@ export const mybookings = async () => {
   const res = await axios.post(
     "https://airgo-3t6h.onrender.com/user/mybookings",
     {},
+
+{
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+},
     {
       withCredentials: true,
     }

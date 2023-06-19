@@ -8,6 +8,12 @@ export const book = async (data) => {
       flightId: data.flightId,
       seats: data.seats,
     },
+
+{
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+},
     {
       withCredentials: true,
     }
